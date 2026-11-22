@@ -1,0 +1,1822 @@
+// converted by version 1.3
+// on Sun Nov 22 20:32:15 ICT 2026
+
+.package library {
+	.aid 0xF0:0x4C:0x49:0x42:0x0;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.3;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.3;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.3;		//javacard/framework
+	}
+
+	.applet {
+		0xF0:0x4C:0x49:0x42:0x0:0x1 LibraryApplet;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] KeyManager/saltPin;
+		// 1
+		instanceFieldRef byte[] KeyManager/saltPuk;
+		// 2
+		instanceFieldRef byte[] KeyManager/wrappedDekPin;
+		// 3
+		instanceFieldRef byte[] KeyManager/wrappedDekPuk;
+		// 4
+		instanceFieldRef byte[] KeyManager/keyCheckVal;
+		// 5
+		instanceFieldRef byte[] KeyManager/dekRam;
+		// 6
+		instanceFieldRef byte[] KeyManager/kekRam;
+		// 7
+		instanceFieldRef byte[] KeyManager/hashBufRam;
+		// 8
+		instanceFieldRef byte[] KeyManager/wrapTmpRam;
+		// 9
+		instanceFieldRef byte[] KeyManager/saltTmpRam;
+		// 10
+		instanceFieldRef 1.14 KeyManager/randomData;
+		// 11
+		instanceFieldRef 1.11 KeyManager/sha256;
+		// 12
+		instanceFieldRef 1.20 KeyManager/aesKey;
+		// 13
+		instanceFieldRef 2.1 KeyManager/aesEcb;
+		// 14
+		instanceFieldRef KeyManager LibraryApplet/keyManager;
+		// 15
+		instanceFieldRef PinManager LibraryApplet/pinManager;
+		// 16
+		instanceFieldRef ProfileStore LibraryApplet/profileStore;
+		// 17
+		instanceFieldRef KeyManager PinManager/keys;
+		// 18
+		instanceFieldRef 3.9 PinManager/pin;
+		// 19
+		instanceFieldRef 3.9 PinManager/puk;
+		// 20
+		instanceFieldRef byte[] PinManager/cardId;
+		// 21
+		instanceFieldRef byte PinManager/state;
+		// 22
+		instanceFieldRef KeyManager ProfileStore/keys;
+		// 23
+		instanceFieldRef byte[] ProfileStore/policy;
+		// 24
+		instanceFieldRef byte[] ProfileStore/counter;
+		// 25
+		instanceFieldRef byte[] ProfileStore/profile;
+		// 26
+		instanceFieldRef byte[] ProfileStore/workBuf;
+		// 27
+		instanceFieldRef byte[] ProfileStore/cipherBuf;
+		// 28
+		instanceFieldRef byte[] ProfileStore/ivRam;
+		// 29
+		instanceFieldRef 1.14 ProfileStore/randomData;
+		// 30
+		instanceFieldRef 1.20 ProfileStore/aesKey;
+		// 31
+		instanceFieldRef 2.1 ProfileStore/aesCbc;
+		// 32
+		staticMethodRef 3.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 33
+		virtualMethodRef 2.1.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 34
+		virtualMethodRef 2.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 35
+		staticMethodRef 3.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 36
+		virtualMethodRef KeyManager/clearSession()V;
+		// 37
+		staticMethodRef 3.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 38
+		staticMethodRef 3.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 39
+		classRef KeyManager;
+		// 40
+		staticMethodRef KeyManager/<init>()V;
+		// 41
+		staticMethodRef 1.11.0(BZ)Ljavacard/security/MessageDigest;;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+			.descriptor	Ljavacard/security/MessageDigest;	1.11;
+
+		// 42
+		classRef PinManager;
+		// 43
+		staticMethodRef PinManager/<init>(Llibrary/KeyManager;)V;
+		// 44
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 45
+		classRef ProfileStore;
+		// 46
+		staticMethodRef ProfileStore/<init>(Llibrary/KeyManager;)V;
+		// 47
+		staticMethodRef 1.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 48
+		classRef LibraryApplet;
+		// 49
+		staticMethodRef LibraryApplet/<init>()V;
+		// 50
+		virtualMethodRef 3.3.2([BSB)V;		// register([BSB)V
+		// 51
+		virtualMethodRef PinManager/endSession()V;
+		// 52
+		virtualMethodRef 3.3.3()Z;		// selectingApplet()Z
+		// 53
+		virtualMethodRef 3.10.1()[B;		// getBuffer()[B
+		// 54
+		virtualMethodRef PinManager/checkNotDestroyed()V;
+		// 55
+		staticMethodRef LibraryApplet/issueCard(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+		// 56
+		virtualMethodRef PinManager/getStatus(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+		// 57
+		virtualMethodRef PinManager/verifyPin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+		// 58
+		virtualMethodRef PinManager/changePin(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+		// 59
+		virtualMethodRef PinManager/unblock(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+		// 60
+		virtualMethodRef PinManager/requireActive()V;
+		// 61
+		virtualMethodRef PinManager/requireVerified()V;
+		// 62
+		virtualMethodRef ProfileStore/getInfo(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+		// 63
+		virtualMethodRef ProfileStore/setInfo(Ljavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+		// 64
+		virtualMethodRef PinManager/requireBlank()V;
+		// 65
+		staticMethodRef PinManager/readData(Ljavacard/framework/APDU;)S;
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+		// 66
+		staticMethodRef PinManager/isDigits([BSSSS)Z;
+		// 67
+		staticMethodRef 3.8.1()V;		// javacard/framework/JCSystem.beginTransaction()V
+		// 68
+		virtualMethodRef PinManager/setupFromIssue([BSSSS)V;
+		// 69
+		virtualMethodRef ProfileStore/saveIssueData([BSS)V;
+		// 70
+		staticMethodRef 3.8.2()V;		// javacard/framework/JCSystem.commitTransaction()V
+		// 71
+		classRef 1.20;		// javacard/security/AESKey
+		// 72
+		classRef 3.9;		// javacard/framework/OwnerPIN
+		// 73
+		staticMethodRef 3.9.0(BB)V;		// javacard/framework/OwnerPIN.<init>(BB)V
+		// 74
+		staticMethodRef 1.14.0(B)Ljavacard/security/RandomData;;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+			.descriptor	Ljavacard/security/RandomData;	1.14;
+
+		// 75
+		staticMethodRef 2.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	2.1;
+
+		// 76
+		staticMethodRef 3.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 77
+		virtualMethodRef 1.14.1([BSS)V;		// generateData([BSS)V
+		// 78
+		virtualMethodRef 3.9.4()Z;		// isValidated()Z
+		// 79
+		virtualMethodRef 3.9.5()V;		// reset()V
+		// 80
+		virtualMethodRef 3.10.6()S;		// setIncomingAndReceive()S
+		// 81
+		virtualMethodRef 3.9.2()B;		// getTriesRemaining()B
+		// 82
+		virtualMethodRef 3.9.8([BSB)V;		// update([BSB)V
+		// 83
+		virtualMethodRef KeyManager/onIssue([BSSSS)V;
+		// 84
+		classRef 3.7;		// javacard/framework/ISOException
+		// 85
+		virtualMethodRef 3.9.1([BSB)Z;		// check([BSB)Z
+		// 86
+		staticMethodRef PinManager/failPin()V;
+		// 87
+		virtualMethodRef KeyManager/onVerified([BSS)V;
+		// 88
+		virtualMethodRef 3.7.1()S;		// getReason()S
+		// 89
+		virtualMethodRef KeyManager/onPinChanged([BSS)V;
+		// 90
+		virtualMethodRef KeyManager/onUnblock([BSSSS)V;
+		// 91
+		virtualMethodRef 3.10.8(SS)V;		// setOutgoingAndSend(SS)V
+		// 92
+		staticMethodRef KeyManager/deriveKek([BSS[B)V;
+		// 93
+		staticMethodRef KeyManager/wrapDekInto([B)V;
+		// 94
+		staticMethodRef 3.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 95
+		virtualMethodRef 1.11.4()V;		// reset()V
+		// 96
+		virtualMethodRef 1.11.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 97
+		staticMethodRef KeyManager/unwrapDek([B)V;
+		// 98
+		staticMethodRef KeyManager/checkCv()V;
+		// 99
+		staticMethodRef KeyManager/rewrapForPin([BSS)V;
+		// 100
+		staticMethodRef 3.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 101
+		virtualMethodRef 1.11.5([BSS)V;		// update([BSS)V
+		// 102
+		staticMethodRef ProfileStore/encryptWorkBufAndSave()V;
+		// 103
+		staticMethodRef ProfileStore/wipeWork()V;
+		// 104
+		staticMethodRef ProfileStore/decryptToWorkBuf()V;
+		// 105
+		virtualMethodRef KeyManager/dek()[B;
+		// 106
+		virtualMethodRef 2.1.4(Ljavacard/security/Key;B[BSS)V;		// init(Ljavacard/security/Key;B[BSS)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+	}
+
+	.class public KeyManager 0 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private byte[] saltPin 0;		// [B
+			private byte[] saltPuk 1;		// [B
+			private byte[] wrappedDekPin 2;		// [B
+			private byte[] wrappedDekPuk 3;		// [B
+			private byte[] keyCheckVal 4;		// [B
+			private byte[] dekRam 5;		// [B
+			private byte[] kekRam 6;		// [B
+			private byte[] hashBufRam 7;		// [B
+			private byte[] wrapTmpRam 8;		// [B
+			private byte[] saltTmpRam 9;		// [B
+			private 1.14 randomData 10;		// Ljavacard/security/RandomData;
+			private 1.11 sha256 11;		// Ljavacard/security/MessageDigest;
+			private 1.20 aesKey 12;		// Ljavacard/security/AESKey;
+			private 2.1 aesEcb 13;		// Ljavacardx/crypto/Cipher;
+			private static final short KEY_LEN = 16;		// S
+			private static final short SALT_LEN = 16;		// S
+			private static final short HASH_LEN = 32;		// S
+			private static final short CV_LEN = 4;		// S
+			private static final short KDF_ITERATIONS = 100;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			dek()[B;
+			onIssue([BSSSS)V;
+			onVerified([BSS)V;
+			onPinChanged([BSS)V;
+			onUnblock([BSSSS)V;
+			clearSession()V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 44;		// java/lang/Object.<init>()V
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 0;		// reference library/KeyManager.saltPin
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 1;		// reference library/KeyManager.saltPuk
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 2;		// reference library/KeyManager.wrappedDekPin
+					aload_0;
+					bspush 16;
+					newarray 11;
+					putfield_a 3;		// reference library/KeyManager.wrappedDekPuk
+					aload_0;
+					sconst_4;
+					newarray 11;
+					putfield_a 4;		// reference library/KeyManager.keyCheckVal
+					aload_0;
+					bspush 16;
+					sconst_2;
+					invokestatic 76;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 5;		// reference library/KeyManager.dekRam
+					aload_0;
+					bspush 16;
+					sconst_2;
+					invokestatic 76;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 6;		// reference library/KeyManager.kekRam
+					aload_0;
+					bspush 32;
+					sconst_2;
+					invokestatic 76;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 7;		// reference library/KeyManager.hashBufRam
+					aload_0;
+					bspush 16;
+					sconst_2;
+					invokestatic 76;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 8;		// reference library/KeyManager.wrapTmpRam
+					aload_0;
+					bspush 16;
+					sconst_2;
+					invokestatic 76;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 9;		// reference library/KeyManager.saltTmpRam
+					aload_0;
+					sconst_2;
+					invokestatic 74;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					putfield_a 10;		// reference library/KeyManager.randomData
+					aload_0;
+					sconst_4;
+					sconst_0;
+					invokestatic 41;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					putfield_a 11;		// reference library/KeyManager.sha256
+					aload_0;
+					bspush 14;
+					sspush 128;
+					sconst_0;
+					invokestatic 47;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 71;		// T_CLASSORINTERFACE javacard/security/AESKey
+					putfield_a 12;		// reference library/KeyManager.aesKey
+					aload_0;
+					bspush 14;
+					sconst_0;
+					invokestatic 75;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 13;		// reference library/KeyManager.aesEcb
+					return;
+		}
+
+		.method public dek()[B 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 5;		// reference library/KeyManager.dekRam
+					areturn;
+		}
+
+		.method public onIssue([BSSSS)V 2 {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 10;		// reference library/KeyManager.randomData
+					getfield_a_this 5;		// reference library/KeyManager.dekRam
+					sconst_0;
+					bspush 16;
+					invokevirtual 77;		// generateData([BSS)V
+					getfield_a_this 10;		// reference library/KeyManager.randomData
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					sconst_0;
+					bspush 16;
+					invokevirtual 77;		// generateData([BSS)V
+					aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					invokespecial 92;		// library/KeyManager.deriveKek([BSS[B)V
+					aload_0;
+					getfield_a_this 2;		// reference library/KeyManager.wrappedDekPin
+					invokespecial 93;		// library/KeyManager.wrapDekInto([B)V
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					sconst_0;
+					getfield_a_this 0;		// reference library/KeyManager.saltPin
+					sconst_0;
+					bspush 16;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 10;		// reference library/KeyManager.randomData
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					sconst_0;
+					bspush 16;
+					invokevirtual 77;		// generateData([BSS)V
+					aload_0;
+					aload_1;
+					sload 4;
+					sload 5;
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					invokespecial 92;		// library/KeyManager.deriveKek([BSS[B)V
+					aload_0;
+					getfield_a_this 3;		// reference library/KeyManager.wrappedDekPuk
+					invokespecial 93;		// library/KeyManager.wrapDekInto([B)V
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					sconst_0;
+					getfield_a_this 1;		// reference library/KeyManager.saltPuk
+					sconst_0;
+					bspush 16;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 11;		// reference library/KeyManager.sha256
+					invokevirtual 95;		// reset()V
+					getfield_a_this 11;		// reference library/KeyManager.sha256
+					getfield_a_this 5;		// reference library/KeyManager.dekRam
+					sconst_0;
+					bspush 16;
+					getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					invokevirtual 96;		// doFinal([BSS[BS)S
+					pop;
+					getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					getfield_a_this 4;		// reference library/KeyManager.keyCheckVal
+					sconst_0;
+					sconst_4;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+		.method public onVerified([BSS)V 3 {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					getfield_a_this 0;		// reference library/KeyManager.saltPin
+					invokespecial 92;		// library/KeyManager.deriveKek([BSS[B)V
+					aload_0;
+					getfield_a_this 2;		// reference library/KeyManager.wrappedDekPin
+					invokespecial 97;		// library/KeyManager.unwrapDek([B)V
+					aload_0;
+					invokespecial 98;		// library/KeyManager.checkCv()V
+					return;
+		}
+
+		.method public onPinChanged([BSS)V 4 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokespecial 99;		// library/KeyManager.rewrapForPin([BSS)V
+					return;
+		}
+
+		.method public onUnblock([BSSSS)V 5 {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					getfield_a_this 1;		// reference library/KeyManager.saltPuk
+					invokespecial 92;		// library/KeyManager.deriveKek([BSS[B)V
+					aload_0;
+					getfield_a_this 3;		// reference library/KeyManager.wrappedDekPuk
+					invokespecial 97;		// library/KeyManager.unwrapDek([B)V
+					aload_0;
+					invokespecial 98;		// library/KeyManager.checkCv()V
+					aload_0;
+					aload_1;
+					sload 4;
+					sload 5;
+					invokespecial 99;		// library/KeyManager.rewrapForPin([BSS)V
+					return;
+		}
+
+		.method public clearSession()V 6 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 5;		// reference library/KeyManager.dekRam
+					sconst_0;
+					bspush 16;
+					sconst_0;
+					invokestatic 100;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 6;		// reference library/KeyManager.kekRam
+					sconst_0;
+					bspush 16;
+					sconst_0;
+					invokestatic 100;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					bspush 32;
+					sconst_0;
+					invokestatic 100;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 8;		// reference library/KeyManager.wrapTmpRam
+					sconst_0;
+					bspush 16;
+					sconst_0;
+					invokestatic 100;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					sconst_0;
+					bspush 16;
+					sconst_0;
+					invokestatic 100;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private rewrapForPin([BSS)V {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 10;		// reference library/KeyManager.randomData
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					sconst_0;
+					bspush 16;
+					invokevirtual 77;		// generateData([BSS)V
+					aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					invokespecial 92;		// library/KeyManager.deriveKek([BSS[B)V
+					aload_0;
+					getfield_a_this 2;		// reference library/KeyManager.wrappedDekPin
+					invokespecial 93;		// library/KeyManager.wrapDekInto([B)V
+					getfield_a_this 9;		// reference library/KeyManager.saltTmpRam
+					sconst_0;
+					getfield_a_this 0;		// reference library/KeyManager.saltPin
+					sconst_0;
+					bspush 16;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+		.method private deriveKek([BSS[B)V {
+			.stack 6;
+			.locals 1;
+
+				L0:	getfield_a_this 11;		// reference library/KeyManager.sha256
+					invokevirtual 95;		// reset()V
+					getfield_a_this 11;		// reference library/KeyManager.sha256
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 101;		// update([BSS)V
+					getfield_a_this 11;		// reference library/KeyManager.sha256
+					aload 4;
+					sconst_0;
+					bspush 16;
+					getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					invokevirtual 96;		// doFinal([BSS[BS)S
+					pop;
+					sconst_1;
+					sstore 5;
+				L1:	goto L3;
+				L2:	getfield_a_this 11;		// reference library/KeyManager.sha256
+					invokevirtual 95;		// reset()V
+					getfield_a_this 11;		// reference library/KeyManager.sha256
+					getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					bspush 32;
+					invokevirtual 101;		// update([BSS)V
+					getfield_a_this 11;		// reference library/KeyManager.sha256
+					aload 4;
+					sconst_0;
+					bspush 16;
+					getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					invokevirtual 96;		// doFinal([BSS[BS)S
+					pop;
+					sinc 5 1;
+				L3:	sload 5;
+					bspush 100;
+					if_scmplt L2;
+				L4:	getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					getfield_a_this 6;		// reference library/KeyManager.kekRam
+					sconst_0;
+					bspush 16;
+					invokestatic 32;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					return;
+		}
+
+		.method private wrapDekInto([B)V {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 12;		// reference library/KeyManager.aesKey
+					getfield_a_this 6;		// reference library/KeyManager.kekRam
+					sconst_0;
+					invokeinterface 3 71 4;		// javacard/security/AESKey
+					getfield_a_this 13;		// reference library/KeyManager.aesEcb
+					getfield_a_this 12;		// reference library/KeyManager.aesKey
+					sconst_2;
+					invokevirtual 33;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 13;		// reference library/KeyManager.aesEcb
+					getfield_a_this 5;		// reference library/KeyManager.dekRam
+					sconst_0;
+					bspush 16;
+					getfield_a_this 8;		// reference library/KeyManager.wrapTmpRam
+					sconst_0;
+					invokevirtual 34;		// doFinal([BSS[BS)S
+					pop;
+					getfield_a_this 8;		// reference library/KeyManager.wrapTmpRam
+					sconst_0;
+					aload_1;
+					sconst_0;
+					bspush 16;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+		.method private unwrapDek([B)V {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 12;		// reference library/KeyManager.aesKey
+					getfield_a_this 6;		// reference library/KeyManager.kekRam
+					sconst_0;
+					invokeinterface 3 71 4;		// javacard/security/AESKey
+					getfield_a_this 13;		// reference library/KeyManager.aesEcb
+					getfield_a_this 12;		// reference library/KeyManager.aesKey
+					sconst_1;
+					invokevirtual 33;		// init(Ljavacard/security/Key;B)V
+					getfield_a_this 13;		// reference library/KeyManager.aesEcb
+					aload_1;
+					sconst_0;
+					bspush 16;
+					getfield_a_this 5;		// reference library/KeyManager.dekRam
+					sconst_0;
+					invokevirtual 34;		// doFinal([BSS[BS)S
+					pop;
+					return;
+		}
+
+		.method private checkCv()V {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 11;		// reference library/KeyManager.sha256
+					invokevirtual 95;		// reset()V
+					getfield_a_this 11;		// reference library/KeyManager.sha256
+					getfield_a_this 5;		// reference library/KeyManager.dekRam
+					sconst_0;
+					bspush 16;
+					getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					invokevirtual 96;		// doFinal([BSS[BS)S
+					pop;
+					getfield_a_this 7;		// reference library/KeyManager.hashBufRam
+					sconst_0;
+					getfield_a_this 4;		// reference library/KeyManager.keyCheckVal
+					sconst_0;
+					sconst_4;
+					invokestatic 35;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifeq L2;
+				L1:	aload_0;
+					invokevirtual 36;		// clearSession()V
+					sspush 28416;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	return;
+		}
+
+	}
+
+	.class public LibraryApplet 1 extends 3.3 {		// extends javacard/framework/Applet
+
+		.fields {
+			private KeyManager keyManager 0;		// Llibrary/KeyManager;
+			private PinManager pinManager 1;		// Llibrary/PinManager;
+			private ProfileStore profileStore 2;		// Llibrary/ProfileStore;
+			public static final byte CLA_LIB = -128;		// B
+			public static final byte INS_ISSUE_CARD = 1;		// B
+			public static final byte INS_GET_STATUS = 4;		// B
+			public static final byte INS_VERIFY_PIN = 32;		// B
+			public static final byte INS_CHANGE_PIN = 36;		// B
+			public static final byte INS_UNBLOCK = 44;		// B
+			public static final byte INS_GET_INFO = 48;		// B
+			public static final byte INS_SET_INFO = 49;		// B
+			private static final short ISS_CARD_ID = 0;		// S
+			private static final short ISS_PIN_LEN = 8;		// S
+			private static final short ISS_PIN = 9;		// S
+			private static final short ISS_PUK = 15;		// S
+			private static final short ISS_POLICY = 23;		// S
+			private static final short ISS_PROFILE = 31;		// S
+			private static final short ISS_LENGTH = 131;		// S
+		}
+
+		.publicMethodTable 4 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method private <init>()V {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 38;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					new 39;		// library/KeyManager
+					dup;
+					invokespecial 40;		// library/KeyManager.<init>()V
+					putfield_a 14;		// reference library/LibraryApplet.keyManager
+					aload_0;
+					new 42;		// library/PinManager
+					dup;
+					getfield_a_this 14;		// reference library/LibraryApplet.keyManager
+					invokespecial 43;		// library/PinManager.<init>(Llibrary/KeyManager;)V
+					putfield_a 15;		// reference library/LibraryApplet.pinManager
+					aload_0;
+					new 45;		// library/ProfileStore
+					dup;
+					getfield_a_this 14;		// reference library/LibraryApplet.keyManager
+					invokespecial 46;		// library/ProfileStore.<init>(Llibrary/KeyManager;)V
+					putfield_a 16;		// reference library/LibraryApplet.profileStore
+					return;
+		}
+
+		.method public static install([BSB)V 0 {
+			.stack 5;
+			.locals 0;
+
+				L0:	new 48;		// library/LibraryApplet
+					dup;
+					invokespecial 49;		// library/LibraryApplet.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					aload_0;
+					sload_1;
+					baload;
+					invokevirtual 50;		// register([BSB)V
+					return;
+		}
+
+		.method public deselect()V 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					invokevirtual 51;		// endSession()V
+					return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 2;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	aload_0;
+					invokevirtual 52;		// selectingApplet()Z
+					ifeq L2;
+				L1:	return;
+				L2:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L3:	aload_2;
+					sconst_0;
+					baload;
+					bspush -128;
+					if_scmpeq L5;
+				L4:	sspush 28160;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					invokevirtual 54;		// checkNotDestroyed()V
+					aload_2;
+					sconst_1;
+					baload;
+					slookupswitch L13 7 1 L6 4 L7 32 L8 36 L9 44 L10 48 L11 49 L12;
+				L6:	aload_0;
+					aload_1;
+					invokespecial 55;		// library/LibraryApplet.issueCard(Ljavacard/framework/APDU;)V
+					goto L14;
+				L7:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					aload_1;
+					invokevirtual 56;		// getStatus(Ljavacard/framework/APDU;)V
+					goto L14;
+				L8:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					aload_1;
+					invokevirtual 57;		// verifyPin(Ljavacard/framework/APDU;)V
+					goto L14;
+				L9:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					aload_1;
+					invokevirtual 58;		// changePin(Ljavacard/framework/APDU;)V
+					goto L14;
+				L10:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					aload_1;
+					invokevirtual 59;		// unblock(Ljavacard/framework/APDU;)V
+					goto L14;
+				L11:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					invokevirtual 60;		// requireActive()V
+					getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					invokevirtual 61;		// requireVerified()V
+					getfield_a_this 16;		// reference library/LibraryApplet.profileStore
+					aload_1;
+					invokevirtual 62;		// getInfo(Ljavacard/framework/APDU;)V
+					goto L14;
+				L12:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					invokevirtual 60;		// requireActive()V
+					getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					invokevirtual 61;		// requireVerified()V
+					getfield_a_this 16;		// reference library/LibraryApplet.profileStore
+					aload_1;
+					invokevirtual 63;		// setInfo(Ljavacard/framework/APDU;)V
+					goto L14;
+				L13:	sspush 27904;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	return;
+		}
+
+		.method private issueCard(Ljavacard/framework/APDU;)V {
+			.stack 6;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					invokevirtual 64;		// requireBlank()V
+					aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokestatic 65;		// library/PinManager.readData(Ljavacard/framework/APDU;)S
+					sstore_3;
+				L2:	sload_3;
+					sspush 131;
+					if_scmpeq L4;
+				L3:	sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	sconst_5;
+					sstore 4;
+				L5:	aload_2;
+					sload 4;
+					bspush 8;
+					sadd;
+					baload;
+					sspush 255;
+					sand;
+					sstore 5;
+				L6:	sload 4;
+					bspush 9;
+					sadd;
+					sstore 6;
+				L7:	sload 4;
+					bspush 15;
+					sadd;
+					sstore 7;
+				L8:	aload_2;
+					sload 6;
+					sload 5;
+					sconst_4;
+					bspush 6;
+					invokestatic 66;		// library/PinManager.isDigits([BSSSS)Z
+					ifeq L10;
+				L9:	aload_2;
+					sload 7;
+					bspush 8;
+					bspush 8;
+					bspush 8;
+					invokestatic 66;		// library/PinManager.isDigits([BSSSS)Z
+					ifne L11;
+				L10:	sspush 27264;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	invokestatic 67;		// javacard/framework/JCSystem.beginTransaction()V
+					getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					aload_2;
+					sload 4;
+					sconst_0;
+					sadd;
+					sload 6;
+					sload 5;
+					sload 7;
+					invokevirtual 68;		// setupFromIssue([BSSSS)V
+					getfield_a_this 16;		// reference library/LibraryApplet.profileStore
+					aload_2;
+					sload 4;
+					bspush 23;
+					sadd;
+					sload 4;
+					bspush 31;
+					sadd;
+					invokevirtual 69;		// saveIssueData([BSS)V
+					invokestatic 70;		// javacard/framework/JCSystem.commitTransaction()V
+					getfield_a_this 15;		// reference library/LibraryApplet.pinManager
+					invokevirtual 51;		// endSession()V
+					return;
+		}
+
+	}
+
+	.class public PinManager 2 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private 3.9 pin 0;		// Ljavacard/framework/OwnerPIN;
+			private 3.9 puk 1;		// Ljavacard/framework/OwnerPIN;
+			private byte[] cardId 2;		// [B
+			private KeyManager keys 3;		// Llibrary/KeyManager;
+			private byte state 4;		// B
+			public static final byte PIN_TRY_LIMIT = 3;		// B
+			public static final byte PUK_TRY_LIMIT = 5;		// B
+			public static final short PIN_MIN_LEN = 4;		// S
+			public static final short PIN_MAX_LEN = 6;		// S
+			public static final short PUK_LEN = 8;		// S
+			public static final short CARD_ID_LEN = 8;		// S
+			public static final byte STATE_BLANK = 0;		// B
+			public static final byte STATE_ACTIVE = 1;		// B
+			public static final byte STATE_PIN_LOCK = 2;		// B
+			public static final byte STATE_DESTROYED = 3;		// B
+			public static final short SW_PIN_BLOCKED = 27011;		// S
+			public static final short SW_NOT_VERIFIED = 27010;		// S
+			public static final short SW_BAD_STATE = 27013;		// S
+			public static final short SW_WRONG_TRIES = 25536;		// S
+			public static final short SW_INVALID_DATA = 27264;		// S
+			public static final short SW_WRONG_LENGTH = 26368;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			checkNotDestroyed()V;
+			requireBlank()V;
+			requireActive()V;
+			requireVerified()V;
+			endSession()V;
+			setupFromIssue([BSSSS)V;
+			verifyPin(Ljavacard/framework/APDU;)V;
+			changePin(Ljavacard/framework/APDU;)V;
+			unblock(Ljavacard/framework/APDU;)V;
+			getStatus(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(Llibrary/KeyManager;)V 0 {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 44;		// java/lang/Object.<init>()V
+					aload_0;
+					aload_1;
+					putfield_a 17;		// reference library/PinManager.keys
+					aload_0;
+					new 72;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_3;
+					bspush 6;
+					invokespecial 73;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putfield_a 18;		// reference library/PinManager.pin
+					aload_0;
+					new 72;		// javacard/framework/OwnerPIN
+					dup;
+					sconst_5;
+					bspush 8;
+					invokespecial 73;		// javacard/framework/OwnerPIN.<init>(BB)V
+					putfield_a 19;		// reference library/PinManager.puk
+					aload_0;
+					bspush 8;
+					newarray 11;
+					putfield_a 20;		// reference library/PinManager.cardId
+					aload_0;
+					sconst_0;
+					putfield_b 21;		// byte library/PinManager.state
+					return;
+		}
+
+		.method public checkNotDestroyed()V 1 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_b_this 21;		// byte library/PinManager.state
+					sconst_3;
+					if_scmpne L2;
+				L1:	sspush 27011;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	return;
+		}
+
+		.method public requireBlank()V 2 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 21;		// byte library/PinManager.state
+					ifeq L2;
+				L1:	sspush 27013;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	return;
+		}
+
+		.method public requireActive()V 3 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_b_this 21;		// byte library/PinManager.state
+					sconst_3;
+					if_scmpne L2;
+				L1:	sspush 27011;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	getfield_b_this 21;		// byte library/PinManager.state
+					sconst_1;
+					if_scmpeq L4;
+				L3:	sspush 27013;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	return;
+		}
+
+		.method public requireVerified()V 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 18;		// reference library/PinManager.pin
+					invokevirtual 78;		// isValidated()Z
+					ifne L2;
+				L1:	sspush 27010;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	return;
+		}
+
+		.method public endSession()V 5 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 18;		// reference library/PinManager.pin
+					invokevirtual 79;		// reset()V
+					getfield_a_this 19;		// reference library/PinManager.puk
+					invokevirtual 79;		// reset()V
+					getfield_a_this 17;		// reference library/PinManager.keys
+					invokevirtual 36;		// clearSession()V
+					return;
+		}
+
+		.method public static readData(Ljavacard/framework/APDU;)S 1 {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	aload_0;
+					invokevirtual 53;		// getBuffer()[B
+					astore_1;
+				L1:	aload_1;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 80;		// setIncomingAndReceive()S
+					sstore_3;
+				L3:	sload_3;
+					sload_2;
+					if_scmpeq L5;
+				L4:	sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	sload_2;
+					sreturn;
+		}
+
+		.method public static isDigits([BSSSS)Z 2 {
+			.stack 3;
+			.locals 2;
+
+				L0:	sload_2;
+					sload_3;
+					if_scmplt L2;
+				L1:	sload_2;
+					sload 4;
+					if_scmple L3;
+				L2:	sconst_0;
+					sreturn;
+				L3:	sconst_0;
+					sstore 5;
+				L4:	goto L10;
+				L5:	aload_0;
+					sload_1;
+					sload 5;
+					sadd;
+					baload;
+					sstore 6;
+				L6:	sload 6;
+					bspush 48;
+					if_scmplt L8;
+				L7:	sload 6;
+					bspush 57;
+					if_scmple L9;
+				L8:	sconst_0;
+					sreturn;
+				L9:	sinc 5 1;
+				L10:	sload 5;
+					sload_2;
+					if_scmplt L5;
+				L11:	sconst_1;
+					sreturn;
+		}
+
+		.method private failPin()V {
+			.stack 2;
+			.locals 1;
+
+				L0:	aload_0;
+					invokevirtual 51;		// endSession()V
+					getfield_a_this 18;		// reference library/PinManager.pin
+					invokevirtual 81;		// getTriesRemaining()B
+					sstore_1;
+				L1:	sload_1;
+					ifne L3;
+				L2:	sspush 27011;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L3:	sspush 25536;
+					sload_1;
+					sadd;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+					return;
+		}
+
+		.method public setupFromIssue([BSSSS)V 6 {
+			.stack 6;
+			.locals 0;
+
+				L0:	aload_1;
+					sload_2;
+					getfield_a_this 20;		// reference library/PinManager.cardId
+					sconst_0;
+					bspush 8;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 18;		// reference library/PinManager.pin
+					aload_1;
+					sload_3;
+					sload 4;
+					s2b;
+					invokevirtual 82;		// update([BSB)V
+					getfield_a_this 19;		// reference library/PinManager.puk
+					aload_1;
+					sload 5;
+					bspush 8;
+					invokevirtual 82;		// update([BSB)V
+					getfield_a_this 17;		// reference library/PinManager.keys
+					aload_1;
+					sload_3;
+					sload 4;
+					sload 5;
+					bspush 8;
+					invokevirtual 83;		// onIssue([BSSSS)V
+					aload_0;
+					sconst_1;
+					putfield_b 21;		// byte library/PinManager.state
+					return;
+		}
+
+		.method public verifyPin(Ljavacard/framework/APDU;)V 7 {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	aload_0;
+					invokevirtual 60;		// requireActive()V
+					aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokestatic 65;		// library/PinManager.readData(Ljavacard/framework/APDU;)S
+					sstore_3;
+				L2:	sconst_5;
+					sstore 4;
+				L3:	aload_2;
+					sload 4;
+					sload_3;
+					sconst_4;
+					bspush 6;
+					invokestatic 66;		// library/PinManager.isDigits([BSSSS)Z
+					ifne L5;
+				L4:	sspush 27264;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	getfield_a_this 18;		// reference library/PinManager.pin
+					invokevirtual 81;		// getTriesRemaining()B
+					ifne L7;
+				L6:	sspush 27011;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	getfield_a_this 18;		// reference library/PinManager.pin
+					aload_2;
+					sload 4;
+					sload_3;
+					s2b;
+					invokevirtual 85;		// check([BSB)Z
+					ifne L9;
+				L8:	aload_0;
+					invokespecial 86;		// library/PinManager.failPin()V
+				L9:	getfield_a_this 17;		// reference library/PinManager.keys
+					aload_2;
+					sload 4;
+					sload_3;
+					invokevirtual 87;		// onVerified([BSS)V
+				L10:	goto L13;
+				L11:	astore 5;
+				L12:	aload_0;
+					invokevirtual 51;		// endSession()V
+					aload 5;
+					invokevirtual 88;		// getReason()S
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L9 L10 L11 84;
+			}
+		}
+
+		.method public changePin(Ljavacard/framework/APDU;)V 8 {
+			.stack 5;
+			.locals 7;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	aload_0;
+					invokevirtual 60;		// requireActive()V
+					aload_0;
+					invokevirtual 61;		// requireVerified()V
+					aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokestatic 65;		// library/PinManager.readData(Ljavacard/framework/APDU;)S
+					sstore_3;
+				L2:	sconst_5;
+					sstore 4;
+				L3:	aload_2;
+					sload 4;
+					baload;
+					sspush 255;
+					sand;
+					sstore 5;
+				L4:	sload 4;
+					sconst_1;
+					sadd;
+					sstore 6;
+				L5:	sload 5;
+					sconst_2;
+					sadd;
+					sload_3;
+					if_scmple L7;
+				L6:	sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	aload_2;
+					sload 6;
+					sload 5;
+					sadd;
+					baload;
+					sspush 255;
+					sand;
+					sstore 7;
+				L8:	sload 6;
+					sload 5;
+					sadd;
+					sconst_1;
+					sadd;
+					sstore 8;
+				L9:	sload 5;
+					sload 7;
+					sadd;
+					sconst_2;
+					sadd;
+					sload_3;
+					if_scmpeq L11;
+				L10:	sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L11:	aload_2;
+					sload 6;
+					sload 5;
+					sconst_4;
+					bspush 6;
+					invokestatic 66;		// library/PinManager.isDigits([BSSSS)Z
+					ifeq L13;
+				L12:	aload_2;
+					sload 8;
+					sload 7;
+					sconst_4;
+					bspush 6;
+					invokestatic 66;		// library/PinManager.isDigits([BSSSS)Z
+					ifne L14;
+				L13:	sspush 27264;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L14:	sload 5;
+					sload 7;
+					if_scmpne L17;
+				L15:	aload_2;
+					sload 6;
+					aload_2;
+					sload 8;
+					sload 5;
+					invokestatic 35;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L17;
+				L16:	sspush 27264;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	getfield_a_this 18;		// reference library/PinManager.pin
+					aload_2;
+					sload 6;
+					sload 5;
+					s2b;
+					invokevirtual 85;		// check([BSB)Z
+					ifne L19;
+				L18:	aload_0;
+					invokespecial 86;		// library/PinManager.failPin()V
+				L19:	invokestatic 67;		// javacard/framework/JCSystem.beginTransaction()V
+					getfield_a_this 17;		// reference library/PinManager.keys
+					aload_2;
+					sload 8;
+					sload 7;
+					invokevirtual 89;		// onPinChanged([BSS)V
+					getfield_a_this 18;		// reference library/PinManager.pin
+					aload_2;
+					sload 8;
+					sload 7;
+					s2b;
+					invokevirtual 82;		// update([BSB)V
+					invokestatic 70;		// javacard/framework/JCSystem.commitTransaction()V
+					getfield_a_this 18;		// reference library/PinManager.pin
+					aload_2;
+					sload 8;
+					sload 7;
+					s2b;
+					invokevirtual 85;		// check([BSB)Z
+					pop;
+					return;
+		}
+
+		.method public unblock(Ljavacard/framework/APDU;)V 9 {
+			.stack 6;
+			.locals 7;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	aload_0;
+					invokevirtual 60;		// requireActive()V
+					aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokestatic 65;		// library/PinManager.readData(Ljavacard/framework/APDU;)S
+					sstore_3;
+				L2:	sconst_5;
+					sstore 4;
+				L3:	sload_3;
+					bspush 9;
+					if_scmpge L5;
+				L4:	sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	sload 4;
+					sstore 5;
+				L6:	aload_2;
+					sload 4;
+					bspush 8;
+					sadd;
+					baload;
+					sspush 255;
+					sand;
+					sstore 6;
+				L7:	sload 4;
+					bspush 8;
+					sadd;
+					sconst_1;
+					sadd;
+					sstore 7;
+				L8:	bspush 9;
+					sload 6;
+					sadd;
+					sload_3;
+					if_scmpeq L10;
+				L9:	sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	aload_2;
+					sload 5;
+					bspush 8;
+					bspush 8;
+					bspush 8;
+					invokestatic 66;		// library/PinManager.isDigits([BSSSS)Z
+					ifeq L12;
+				L11:	aload_2;
+					sload 7;
+					sload 6;
+					sconst_4;
+					bspush 6;
+					invokestatic 66;		// library/PinManager.isDigits([BSSSS)Z
+					ifne L13;
+				L12:	sspush 27264;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	getfield_a_this 19;		// reference library/PinManager.puk
+					aload_2;
+					sload 5;
+					bspush 8;
+					invokevirtual 85;		// check([BSB)Z
+					ifne L18;
+				L14:	getfield_a_this 19;		// reference library/PinManager.puk
+					invokevirtual 81;		// getTriesRemaining()B
+					sstore 8;
+				L15:	sload 8;
+					ifne L17;
+				L16:	aload_0;
+					sconst_3;
+					putfield_b 21;		// byte library/PinManager.state
+					sspush 27011;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	sspush 25536;
+					sload 8;
+					sadd;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L18:	invokestatic 67;		// javacard/framework/JCSystem.beginTransaction()V
+					getfield_a_this 17;		// reference library/PinManager.keys
+					aload_2;
+					sload 5;
+					bspush 8;
+					sload 7;
+					sload 6;
+					invokevirtual 90;		// onUnblock([BSSSS)V
+					getfield_a_this 18;		// reference library/PinManager.pin
+					aload_2;
+					sload 7;
+					sload 6;
+					s2b;
+					invokevirtual 82;		// update([BSB)V
+					invokestatic 70;		// javacard/framework/JCSystem.commitTransaction()V
+					aload_0;
+					invokevirtual 51;		// endSession()V
+					return;
+		}
+
+		.method public getStatus(Ljavacard/framework/APDU;)V 10 {
+			.stack 5;
+			.locals 4;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_b_this 21;		// byte library/PinManager.state
+					sstore_3;
+				L2:	sconst_3;
+					sstore 4;
+				L3:	sconst_5;
+					sstore 5;
+				L4:	getfield_b_this 21;		// byte library/PinManager.state
+					sconst_1;
+					if_scmpne L7;
+				L5:	getfield_a_this 18;		// reference library/PinManager.pin
+					invokevirtual 81;		// getTriesRemaining()B
+					sstore 4;
+					getfield_a_this 19;		// reference library/PinManager.puk
+					invokevirtual 81;		// getTriesRemaining()B
+					sstore 5;
+					sload 4;
+					ifne L7;
+				L6:	sconst_2;
+					sstore_3;
+				L7:	aload_2;
+					sconst_0;
+					sload_3;
+					bastore;
+					aload_2;
+					sconst_1;
+					sload 4;
+					bastore;
+					aload_2;
+					sconst_2;
+					sload 5;
+					bastore;
+					getfield_a_this 20;		// reference library/PinManager.cardId
+					sconst_0;
+					aload_2;
+					sconst_3;
+					bspush 8;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_1;
+					sconst_0;
+					bspush 11;
+					invokevirtual 91;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+	}
+
+	.class public ProfileStore 3 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private KeyManager keys 0;		// Llibrary/KeyManager;
+			private byte[] policy 1;		// [B
+			private byte[] counter 2;		// [B
+			private byte[] profile 3;		// [B
+			private byte[] workBuf 4;		// [B
+			private byte[] cipherBuf 5;		// [B
+			private byte[] ivRam 6;		// [B
+			private 1.14 randomData 7;		// Ljavacard/security/RandomData;
+			private 1.20 aesKey 8;		// Ljavacard/security/AESKey;
+			private 2.1 aesCbc 9;		// Ljavacardx/crypto/Cipher;
+			private static final short PROFILE_PLAIN_LEN = 100;		// S
+			private static final short PROFILE_PAD_LEN = 112;		// S
+			private static final short PROFILE_STORE_LEN = 128;		// S
+			private static final short IV_LEN = 16;		// S
+			private static final short POLICY_LEN = 8;		// S
+			private static final short COUNTER_LEN = 4;		// S
+			private static final short SET_INFO_LEN = 84;		// S
+			private static final short SET_INFO_OFFSET = 12;		// S
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+			saveIssueData([BSS)V;
+			getInfo(Ljavacard/framework/APDU;)V;
+			setInfo(Ljavacard/framework/APDU;)V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(Llibrary/KeyManager;)V 0 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 44;		// java/lang/Object.<init>()V
+					aload_0;
+					aload_1;
+					putfield_a 22;		// reference library/ProfileStore.keys
+					aload_0;
+					bspush 8;
+					newarray 11;
+					putfield_a 23;		// reference library/ProfileStore.policy
+					aload_0;
+					sconst_4;
+					newarray 11;
+					putfield_a 24;		// reference library/ProfileStore.counter
+					aload_0;
+					sspush 128;
+					newarray 11;
+					putfield_a 25;		// reference library/ProfileStore.profile
+					aload_0;
+					bspush 112;
+					sconst_2;
+					invokestatic 76;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 26;		// reference library/ProfileStore.workBuf
+					aload_0;
+					bspush 112;
+					sconst_2;
+					invokestatic 76;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 27;		// reference library/ProfileStore.cipherBuf
+					aload_0;
+					bspush 16;
+					sconst_2;
+					invokestatic 76;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 28;		// reference library/ProfileStore.ivRam
+					aload_0;
+					sconst_2;
+					invokestatic 74;		// javacard/security/RandomData.getInstance(B)Ljavacard/security/RandomData;
+					putfield_a 29;		// reference library/ProfileStore.randomData
+					aload_0;
+					bspush 14;
+					sspush 128;
+					sconst_0;
+					invokestatic 47;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 71;		// T_CLASSORINTERFACE javacard/security/AESKey
+					putfield_a 30;		// reference library/ProfileStore.aesKey
+					aload_0;
+					bspush 13;
+					sconst_0;
+					invokestatic 75;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 31;		// reference library/ProfileStore.aesCbc
+					return;
+		}
+
+		.method public saveIssueData([BSS)V 1 {
+			.stack 5;
+			.locals 1;
+
+				L0:	aload_1;
+					sload_2;
+					getfield_a_this 23;		// reference library/ProfileStore.policy
+					sconst_0;
+					bspush 8;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sconst_0;
+					sstore 4;
+				L1:	goto L3;
+				L2:	getfield_a_this 24;		// reference library/ProfileStore.counter
+					sload 4;
+					sconst_0;
+					bastore;
+					sinc 4 1;
+				L3:	sload 4;
+					sconst_4;
+					if_scmplt L2;
+				L4:	getfield_a_this 26;		// reference library/ProfileStore.workBuf
+					sconst_0;
+					bspush 112;
+					sconst_0;
+					invokestatic 100;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_1;
+					sload_3;
+					getfield_a_this 26;		// reference library/ProfileStore.workBuf
+					sconst_0;
+					bspush 100;
+					invokestatic 32;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					invokespecial 102;		// library/ProfileStore.encryptWorkBufAndSave()V
+					aload_0;
+					invokespecial 103;		// library/ProfileStore.wipeWork()V
+					return;
+		}
+
+		.method public getInfo(Ljavacard/framework/APDU;)V 2 {
+			.stack 5;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	aload_0;
+					invokespecial 104;		// library/ProfileStore.decryptToWorkBuf()V
+					aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	getfield_a_this 26;		// reference library/ProfileStore.workBuf
+					sconst_0;
+					aload_2;
+					sconst_0;
+					bspush 100;
+					invokestatic 32;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload_0;
+					invokespecial 103;		// library/ProfileStore.wipeWork()V
+					aload_1;
+					sconst_0;
+					bspush 100;
+					invokevirtual 91;		// setOutgoingAndSend(SS)V
+					return;
+		}
+
+		.method public setInfo(Ljavacard/framework/APDU;)V 3 {
+			.stack 5;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/APDU;	3.10;
+
+				L0:	aload_1;
+					invokevirtual 53;		// getBuffer()[B
+					astore_2;
+				L1:	aload_1;
+					invokestatic 65;		// library/PinManager.readData(Ljavacard/framework/APDU;)S
+					sstore_3;
+				L2:	sload_3;
+					bspush 84;
+					if_scmpeq L4;
+				L3:	sspush 26368;
+					invokestatic 37;		// javacard/framework/ISOException.throwIt(S)V
+				L4:	aload_0;
+					invokespecial 104;		// library/ProfileStore.decryptToWorkBuf()V
+					aload_2;
+					sconst_5;
+					getfield_a_this 26;		// reference library/ProfileStore.workBuf
+					bspush 12;
+					bspush 84;
+					invokestatic 32;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					invokestatic 67;		// javacard/framework/JCSystem.beginTransaction()V
+					aload_0;
+					invokespecial 102;		// library/ProfileStore.encryptWorkBufAndSave()V
+					invokestatic 70;		// javacard/framework/JCSystem.commitTransaction()V
+					aload_0;
+					invokespecial 103;		// library/ProfileStore.wipeWork()V
+					return;
+		}
+
+		.method private encryptWorkBufAndSave()V {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 29;		// reference library/ProfileStore.randomData
+					getfield_a_this 28;		// reference library/ProfileStore.ivRam
+					sconst_0;
+					bspush 16;
+					invokevirtual 77;		// generateData([BSS)V
+					getfield_a_this 30;		// reference library/ProfileStore.aesKey
+					getfield_a_this 22;		// reference library/ProfileStore.keys
+					invokevirtual 105;		// dek()[B
+					sconst_0;
+					invokeinterface 3 71 4;		// javacard/security/AESKey
+					getfield_a_this 31;		// reference library/ProfileStore.aesCbc
+					getfield_a_this 30;		// reference library/ProfileStore.aesKey
+					sconst_2;
+					getfield_a_this 28;		// reference library/ProfileStore.ivRam
+					sconst_0;
+					bspush 16;
+					invokevirtual 106;		// init(Ljavacard/security/Key;B[BSS)V
+					getfield_a_this 31;		// reference library/ProfileStore.aesCbc
+					getfield_a_this 26;		// reference library/ProfileStore.workBuf
+					sconst_0;
+					bspush 112;
+					getfield_a_this 27;		// reference library/ProfileStore.cipherBuf
+					sconst_0;
+					invokevirtual 34;		// doFinal([BSS[BS)S
+					pop;
+					getfield_a_this 28;		// reference library/ProfileStore.ivRam
+					sconst_0;
+					getfield_a_this 25;		// reference library/ProfileStore.profile
+					sconst_0;
+					bspush 16;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 27;		// reference library/ProfileStore.cipherBuf
+					sconst_0;
+					getfield_a_this 25;		// reference library/ProfileStore.profile
+					bspush 16;
+					bspush 112;
+					invokestatic 94;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+		.method private decryptToWorkBuf()V {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_a_this 30;		// reference library/ProfileStore.aesKey
+					getfield_a_this 22;		// reference library/ProfileStore.keys
+					invokevirtual 105;		// dek()[B
+					sconst_0;
+					invokeinterface 3 71 4;		// javacard/security/AESKey
+					getfield_a_this 31;		// reference library/ProfileStore.aesCbc
+					getfield_a_this 30;		// reference library/ProfileStore.aesKey
+					sconst_1;
+					getfield_a_this 25;		// reference library/ProfileStore.profile
+					sconst_0;
+					bspush 16;
+					invokevirtual 106;		// init(Ljavacard/security/Key;B[BSS)V
+					getfield_a_this 31;		// reference library/ProfileStore.aesCbc
+					getfield_a_this 25;		// reference library/ProfileStore.profile
+					bspush 16;
+					bspush 112;
+					getfield_a_this 26;		// reference library/ProfileStore.workBuf
+					sconst_0;
+					invokevirtual 34;		// doFinal([BSS[BS)S
+					pop;
+					return;
+		}
+
+		.method private wipeWork()V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 26;		// reference library/ProfileStore.workBuf
+					sconst_0;
+					bspush 112;
+					sconst_0;
+					invokestatic 100;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 27;		// reference library/ProfileStore.cipherBuf
+					sconst_0;
+					bspush 112;
+					sconst_0;
+					invokestatic 100;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+	}
+
+}

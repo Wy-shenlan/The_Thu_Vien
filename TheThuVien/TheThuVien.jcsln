@@ -1,0 +1,11 @@
+<JavaCardSolution name="TheThuVien">
+    <JavaCardProjects>
+        <JavaCardProject path="TheThuVien/TheThuVien.jcproj" />
+    </JavaCardProjects>
+    <Build>
+        <BuildDependon />
+    </Build>
+    <Platform>
+        <ChipPack Name="JAVACOS" />
+    </Platform>
+</JavaCardSolution>
