@@ -25,8 +25,9 @@ public class LibraryApplet extends Applet {
     public static final byte INS_UNBLOCK    = (byte) 0x2C; // mo khoa bang PUK
     public static final byte INS_GET_INFO   = (byte) 0x30; // xem ho so
     public static final byte INS_SET_INFO   = (byte) 0x31; // cap nhat ho so
-    // TODO (ca nhom): GET_PHOTO 0x32, SET_PHOTO 0x33, RENEW_CARD 0x34,
-    //                 BORROW 0x40, RETURN 0x42, ... them vao day.
+    public static final byte INS_GET_PHOTO  = (byte) 0x32; // doc anh (tung khoi 240 byte)
+    public static final byte INS_SET_PHOTO  = (byte) 0x33; // ghi anh (tung khoi 240 byte)
+    // TODO (ca nhom): RENEW_CARD 0x34, BORROW 0x40, RETURN 0x42, ... them vao day.
 
     // ================= BO CUC DU LIEU CUA ISSUE_CARD (tong 131 byte) =================
     // [ma the 8][do dai PIN 1][PIN 6, dem 0x00][PUK 8][chinh sach 8][ho so 100]
@@ -41,12 +42,14 @@ public class LibraryApplet extends Applet {
     private KeyManager keyManager;     // khoa AES
     private PinManager pinManager;     // PIN/PUK
     private ProfileStore profileStore; // ho so ma hoa
+    private PhotoStore photoStore;     // anh the ma hoa
 
     // ================= KHOI TAO =================
     private LibraryApplet() {
         keyManager = new KeyManager();
         pinManager = new PinManager(keyManager);
         profileStore = new ProfileStore(keyManager);
+        photoStore = new PhotoStore(keyManager);
     }
 
     /** JCRE goi ham nay khi cai applet: tao doi tuong va dang ky AID. */
@@ -92,6 +95,16 @@ public class LibraryApplet extends Applet {
                 pinManager.requireActive();
                 pinManager.requireVerified();
                 profileStore.setInfo(apdu);
+                break;
+            case INS_GET_PHOTO:
+                pinManager.requireActive();
+                pinManager.requireVerified();
+                photoStore.getPhoto(apdu);
+                break;
+            case INS_SET_PHOTO:
+                pinManager.requireActive();
+                pinManager.requireVerified();
+                photoStore.setPhoto(apdu);      // khong huy phien (FR-17 khong ap dung)
                 break;
             default:
                 ISOException.throwIt(ISO7816.SW_INS_NOT_SUPPORTED); // 6D00

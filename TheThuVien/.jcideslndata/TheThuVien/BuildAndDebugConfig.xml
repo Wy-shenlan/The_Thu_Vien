@@ -1,7 +1,11 @@
 <JavaCardConfiguration name="TheThuVien">
     <Config activeconfig="Debug">
         <ConfigItem name="Debug" chipPack="JAVACOS">
-            <InstallConfig />
+            <InstallConfig>
+                <PKG project_name="TheThuVien" pkg_name="library" aid="F0 4C 49 42 00" major="1" minor="0">
+                    <APPLET aid="F0 4C 49 42 00 01" authority="" instanceaid="" parameter="" privileges="" index="20376" name="LibraryApplet" />
+                </PKG>
+            </InstallConfig>
             <ScriptConfig before_build="" after_build="" />
         </ConfigItem>
     </Config>

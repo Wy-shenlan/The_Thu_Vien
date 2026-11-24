@@ -1,10 +1,11 @@
 <JavaCardProject name="TheThuVien" version="2">
 <USER location="src/">
 <PKG name="library" aid="F0 4C 49 42 00" major="1" minor="0">
-<APPLET aid="F0 4C 49 42 00 01" instanceaid="" parameter="" authority="" privileges="" index="20256" name="LibraryApplet"/>
+<APPLET aid="F0 4C 49 42 00 01" instanceaid="" parameter="" authority="" privileges="" index="19896" name="LibraryApplet"/>
 <CLASS name="PinManager"/>
 <CLASS name="KeyManager"/>
 <CLASS name="ProfileStore"/>
+<CLASS name="PhotoStore"/>
 </PKG>
 </USER>
 <BuildPropertyConfig>
